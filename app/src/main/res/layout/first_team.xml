@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="180dp"
+    android:layout_height="80dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:background="@color/purple_700"
+    app:cardCornerRadius="10dp">
+
+
+
+        <ImageView
+            android:id="@+id/image"
+            android:layout_marginTop="10dp"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:layout_marginBottom="10dp"/>
+
+
+        <TextView
+            android:layout_marginTop="15dp"
+            android:id="@+id/player"
+            android:layout_width="107dp"
+            android:layout_height="wrap_content"
+            android:textSize="12sp"
+            android:text="giorgi Qdedamoklidze"
+            android:maxLines="2"
+            android:textColor="@color/black"
+            android:layout_marginStart="50dp"/>
+
+        <TextView
+            android:id="@+id/player2"
+            android:layout_width="107dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="50dp"
+            android:layout_marginTop="50dp"
+            android:text="plaer2dasdasddasasd"
+            android:textColor="@color/black"
+            android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            android:textSize="10sp"
+            android:text="dro"
+            android:layout_marginStart="50dp"/>
+        <TextView
+            android:id="@+id/goalType"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="10sp"
+            android:text="goalTYpe"
+            android:layout_marginStart="65dp"/>
+
+        <ImageView
+            android:id="@+id/raxdeba"
+            android:layout_width="15dp"
+            android:layout_height="15dp"
+            android:layout_marginTop="25dp"
+            android:layout_marginStart="161dp"/>
+
+
+
+
+
+
+</androidx.cardview.widget.CardView>

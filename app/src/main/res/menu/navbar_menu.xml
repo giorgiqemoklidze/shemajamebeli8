@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    >
+    <item android:title="Matches"
+        android:icon="@drawable/ic_matches"/>
+    <item android:title="Top Player"
+        android:icon="@drawable/ic_top_players"/>
+    <item android:title="Vieos"
+        android:icon="@drawable/ic_videos"/>
+    <item android:title="Favorites"
+        android:icon="@drawable/ic_group_95"/>
+    <item android:title="Setings"
+        android:icon="@drawable/ic_settings"/>
+
+</menu>
