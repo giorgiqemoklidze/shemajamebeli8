@@ -12,28 +12,22 @@ import com.example.shemajamebeli8.models.Summary
 
 class SecondTeamRecyclerAdapter(val summary: Summary):RecyclerView.Adapter<SecondTeamRecyclerAdapter.ViewHolder>() {
 
-    private var size =1
+
 
     inner class ViewHolder(val binding : SecondTeamBinding): RecyclerView.ViewHolder(binding.root){
 
        fun  bind(){
 
-           if (!summary.team2Action.isNullOrEmpty()){
-              size = summary.team2Action.size
-           }else {
 
-               binding.player.text = " "
+               binding.player.text = summary.team2Action?.get(adapterPosition)?.action?.player1?.playerName.toString()
                binding.player2.text = " "
-               binding.time.text = " "
-               binding.goalType.text = " "
-           }
+               binding.time.text = summary.actionTime.toString()
+
 
            when(summary.team2Action?.get(adapterPosition)?.actionType) {
                1 -> {
-                   if (!summary.team2Action[adapterPosition].action?.player1?.playerName.isNullOrBlank()) {
-                       binding.player.text = summary.team2Action[adapterPosition].action?.player1?.playerName.toString()
-                       binding.player2.text = " "
-                       binding.time.text = summary.actionTime.toString()
+
+
                        glide(summary.team2Action[adapterPosition].action?.player1?.playerImage.toString(), binding.image)
                        binding.goalType.text = "Goals By"
                        if (summary.team2Action[adapterPosition].action?.goalType == 1) {
@@ -41,37 +35,30 @@ class SecondTeamRecyclerAdapter(val summary: Summary):RecyclerView.Adapter<Secon
                        } else if (summary.team2Action[adapterPosition].action?.goalType == 2) {
                            binding.raxdeba.setImageResource(R.drawable.ic_autogoal)
                        }
-                   }
+
                }
                2 -> {
-                   if (!summary.team2Action[adapterPosition].action?.player1?.playerName.isNullOrBlank()) {
-                       binding.player.text = summary.team2Action[adapterPosition].action?.player1?.playerName.toString()
-                       binding.player2.text = " "
-                       binding.time.text = summary.actionTime.toString()
+
+
                        binding.goalType.text = "Yellow_Card"
                        glide(summary.team2Action[adapterPosition].action?.player1?.playerImage.toString(), binding.image)
                        binding.raxdeba.setImageResource(R.drawable.ic_yellow_card)
-                   }
+
                }
                3 -> {
-                   if (!summary.team2Action[adapterPosition].action?.player1?.playerName.isNullOrBlank()) {
-                       binding.player.text = summary.team2Action[adapterPosition].action?.player1?.playerName.toString()
-                       binding.player2.text = " "
-                       binding.time.text = summary.actionTime.toString()
+
+
                        binding.goalType.text = "Red_Card"
                        glide(summary.team2Action[adapterPosition].action?.player1?.playerImage.toString(), binding.image)
                        binding.raxdeba.setImageResource(R.drawable.ic_red_card)
-                   }
+
                }
 
                4 -> {
-                   if (!summary.team2Action[adapterPosition].action?.player1?.playerName.isNullOrBlank()) {
-                       binding.player.text = summary.team2Action[adapterPosition].action?.player1?.playerName.toString()
                        binding.player2.text = summary.team2Action[adapterPosition].action?.player2?.playerName.toString()
-                       binding.time.text = summary.actionTime.toString()
                        binding.goalType.text = "Subtition"
                        glide(summary.team2Action[adapterPosition].action?.player2?.playerImage.toString(), binding.image)
-                   }
+
                }
 
            }
@@ -102,5 +89,5 @@ class SecondTeamRecyclerAdapter(val summary: Summary):RecyclerView.Adapter<Secon
         holder.bind()
     }
 
-    override fun getItemCount()=size
+    override fun getItemCount()= summary.team2Action?.size?:0
 }

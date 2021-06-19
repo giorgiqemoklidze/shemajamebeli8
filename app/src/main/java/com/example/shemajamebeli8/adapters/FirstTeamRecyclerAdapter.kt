@@ -14,7 +14,6 @@ import com.example.shemajamebeli8.models.Summary
 class FirstTeamRecyclerAdapter(val summary: Summary):RecyclerView.Adapter<FirstTeamRecyclerAdapter.ViewHolder>() {
 
 
-    private var size = 1
 
     inner class ViewHolder(val binding : FirstTeamBinding): RecyclerView.ViewHolder(binding.root){
 
@@ -23,24 +22,14 @@ class FirstTeamRecyclerAdapter(val summary: Summary):RecyclerView.Adapter<FirstT
         fun bind(){
 
 
-            if (!summary.team1Action.isNullOrEmpty()){
-                size = summary.team1Action.size
-            }else {
-                size=1
+                binding.player.text = summary.team1Action?.get(adapterPosition)?.action?.player1?.playerName.toString()
+                binding.player2.text = " "
+                binding.time.text = summary.actionTime.toString()
 
-                binding.player.text = ""
-                binding.player2.text = ""
-                binding.time.text = ""
-                binding.goalType.text = " "
-            }
 
             when(summary.team1Action?.get(adapterPosition)?.actionType){
 
                 1->{
-                    if (!summary.team1Action[adapterPosition].action?.player1?.playerName.isNullOrBlank()) {
-                        binding.player.text = summary.team1Action[adapterPosition].action?.player1?.playerName.toString()
-                        binding.player2.text = " "
-                        binding.time.text = summary.actionTime.toString()
                         binding.goalType.text  = "Goals By"
                         glide(summary.team1Action[adapterPosition].action?.player1?.playerImage.toString(),binding.image)
                         if (summary.team1Action[adapterPosition].action?.goalType == 1){
@@ -48,39 +37,27 @@ class FirstTeamRecyclerAdapter(val summary: Summary):RecyclerView.Adapter<FirstT
                         }else if(summary.team1Action[adapterPosition].action?.goalType == 2){
                             binding.raxdeba.setImageResource(R.drawable.ic_autogoal)
                         }
-                    }
+
                 }
 
                 2->{
-                    if (!summary.team1Action[adapterPosition].action?.player1?.playerName.isNullOrBlank()) {
-                        binding.player.text = summary.team1Action[adapterPosition].action?.player1?.playerName.toString()
-                        binding.player2.text = " "
-                        binding.time.text = summary.actionTime.toString()
                         binding.goalType.text  = "Yellow_Card"
                         binding.raxdeba.setImageResource(R.drawable.ic_yellow_card)
                         glide(summary.team1Action[adapterPosition].action?.player1?.playerImage.toString(),binding.image)
-                    }
+
                 }
 
                 3->{
-                    if (!summary.team1Action[adapterPosition].action?.player1?.playerName.isNullOrBlank()) {
-                        binding.player.text = summary.team1Action[adapterPosition].action?.player1?.playerName.toString()
-                        binding.player2.text = " "
-                        binding.time.text = summary.actionTime.toString()
                         binding.goalType.text = "Red_Card"
                         glide(summary.team1Action[adapterPosition].action?.player1?.playerImage.toString(),binding.image)
                         binding.raxdeba.setImageResource(R.drawable.ic_red_card)
-                    }
+
                 }
 
                 4-> {
-                    if (!summary.team1Action[adapterPosition].action?.player1?.playerName.isNullOrBlank()) {
-                        binding.player.text = summary.team1Action[adapterPosition].action?.player1?.playerName.toString()
                         binding.player2.text = summary.team1Action[adapterPosition].action?.player2?.playerName.toString()
-                        binding.time.text = summary.actionTime.toString()
                         binding.goalType.text = "Subtition"
                         glide(summary.team1Action[adapterPosition].action?.player1?.playerImage.toString(),binding.image)
-                    }
                 }
 
             }
@@ -109,5 +86,5 @@ class FirstTeamRecyclerAdapter(val summary: Summary):RecyclerView.Adapter<FirstT
        holder.bind()
     }
 
-    override fun getItemCount(): Int = size
+    override fun getItemCount()= summary.team1Action?.size?:0
 }
