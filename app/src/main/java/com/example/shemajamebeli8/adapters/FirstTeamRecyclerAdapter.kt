@@ -28,56 +28,63 @@ class FirstTeamRecyclerAdapter(val summary: Summary):RecyclerView.Adapter<FirstT
             }else {
                 size=1
 
-                binding.player.text = " "
-                binding.player2.text = " "
-                binding.time.text = " "
-                binding.goalType.text  = " "
+                binding.player.text = ""
+                binding.player2.text = ""
+                binding.time.text = ""
+                binding.goalType.text = " "
             }
 
-            if (summary.team1Action?.get(adapterPosition)?.actionType ==1) {
-                if (!summary.team1Action[adapterPosition].action?.player1?.playerName.isNullOrBlank()) {
-                    binding.player.text = summary.team1Action[adapterPosition].action?.player1?.playerName.toString()
-                    binding.player2.text = " "
-                    binding.time.text = summary.actionTime.toString()
-                    binding.goalType.text  = "Goals By"
-                    glide(summary.team1Action[adapterPosition].action?.player1?.playerImage.toString(),binding.image)
-                    if (summary.team1Action[adapterPosition].action?.goalType == 1){
-                        binding.raxdeba.setImageResource(R.drawable.ic_goal)
-                    }else if(summary.team1Action[adapterPosition].action?.goalType == 2){
-                        binding.raxdeba.setImageResource(R.drawable.ic_autogoal)
+            when(summary.team1Action?.get(adapterPosition)?.actionType){
+
+                1->{
+                    if (!summary.team1Action[adapterPosition].action?.player1?.playerName.isNullOrBlank()) {
+                        binding.player.text = summary.team1Action[adapterPosition].action?.player1?.playerName.toString()
+                        binding.player2.text = " "
+                        binding.time.text = summary.actionTime.toString()
+                        binding.goalType.text  = "Goals By"
+                        glide(summary.team1Action[adapterPosition].action?.player1?.playerImage.toString(),binding.image)
+                        if (summary.team1Action[adapterPosition].action?.goalType == 1){
+                            binding.raxdeba.setImageResource(R.drawable.ic_goal)
+                        }else if(summary.team1Action[adapterPosition].action?.goalType == 2){
+                            binding.raxdeba.setImageResource(R.drawable.ic_autogoal)
+                        }
                     }
                 }
-            }
-            if (summary.team1Action?.get(adapterPosition)?.actionType == 2){
 
-                if (!summary.team1Action[adapterPosition].action?.player1?.playerName.isNullOrBlank()) {
-                    binding.player.text = summary.team1Action[adapterPosition].action?.player1?.playerName.toString()
-                    binding.player2.text = " "
-                    binding.time.text = summary.actionTime.toString()
-                    binding.raxdeba.setImageResource(R.drawable.ic_yellow_card)
-                    glide(summary.team1Action[adapterPosition].action?.player1?.playerImage.toString(),binding.image)
+                2->{
+                    if (!summary.team1Action[adapterPosition].action?.player1?.playerName.isNullOrBlank()) {
+                        binding.player.text = summary.team1Action[adapterPosition].action?.player1?.playerName.toString()
+                        binding.player2.text = " "
+                        binding.time.text = summary.actionTime.toString()
+                        binding.goalType.text  = "Yellow_Card"
+                        binding.raxdeba.setImageResource(R.drawable.ic_yellow_card)
+                        glide(summary.team1Action[adapterPosition].action?.player1?.playerImage.toString(),binding.image)
+                    }
                 }
-            }
 
-            if (summary.team1Action?.get(adapterPosition)?.actionType == 3){
-
-                if (!summary.team1Action[adapterPosition].action?.player1?.playerName.isNullOrBlank()) {
-                    binding.player.text = summary.team1Action[adapterPosition].action?.player1?.playerName.toString()
-                    binding.player2.text = " "
-                    binding.time.text = summary.actionTime.toString()
-                    glide(summary.team1Action[adapterPosition].action?.player1?.playerImage.toString(),binding.image)
-                    binding.raxdeba.setImageResource(R.drawable.ic_red_card)
+                3->{
+                    if (!summary.team1Action[adapterPosition].action?.player1?.playerName.isNullOrBlank()) {
+                        binding.player.text = summary.team1Action[adapterPosition].action?.player1?.playerName.toString()
+                        binding.player2.text = " "
+                        binding.time.text = summary.actionTime.toString()
+                        binding.goalType.text = "Red_Card"
+                        glide(summary.team1Action[adapterPosition].action?.player1?.playerImage.toString(),binding.image)
+                        binding.raxdeba.setImageResource(R.drawable.ic_red_card)
+                    }
                 }
-            }
-            if (summary.team1Action?.get(adapterPosition)?.actionType == 4){
 
-                if (!summary.team1Action[adapterPosition].action?.player1?.playerName.isNullOrBlank()) {
-                    binding.player.text = summary.team1Action[adapterPosition].action?.player1?.playerName.toString()
-                    binding.player2.text = summary.team1Action[adapterPosition].action?.player2?.playerName.toString()
-                    binding.time.text = summary.actionTime.toString()
-                    glide(summary.team1Action[adapterPosition].action?.player1?.playerImage.toString(),binding.image)
+                4-> {
+                    if (!summary.team1Action[adapterPosition].action?.player1?.playerName.isNullOrBlank()) {
+                        binding.player.text = summary.team1Action[adapterPosition].action?.player1?.playerName.toString()
+                        binding.player2.text = summary.team1Action[adapterPosition].action?.player2?.playerName.toString()
+                        binding.time.text = summary.actionTime.toString()
+                        binding.goalType.text = "Subtition"
+                        glide(summary.team1Action[adapterPosition].action?.player1?.playerImage.toString(),binding.image)
+                    }
                 }
+
             }
+
 
         }
 
